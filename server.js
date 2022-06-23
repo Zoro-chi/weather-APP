@@ -28,7 +28,6 @@ const fetchPhoto = async (city) => {
     orderBy: "relevant",
   });
   const photosArr = photo.response.results;
-  // console.log(photosArr);
   const randomIndex = Math.floor(Math.random() * 10);
   const randomPhoto = photosArr[randomIndex].urls.regular;
   console.log(randomPhoto)
