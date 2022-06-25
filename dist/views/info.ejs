@@ -37,7 +37,7 @@
         </div>
       </div>
 
-    <section id="main" data-router-view="home" style="background-image: url(<%= image.image %>); background-size: cover; filter: brightness(70%); height: 65vh; display: flex;">
+    <section id="main" data-router-view="home" style="background-size: cover; filter: brightness(70%); height: 65vh; display: flex;">
       <div class="forecast-container">
         <div class="forecast-main">
           <div class="main-temp">
@@ -48,7 +48,7 @@
             <h2> <%= weather.weather[0].main %> </h2>
             <p> <%= weather.weather[0].description %> </p>
           </div>
-          <img src="<%= icon %>" alt=" weather icon " srcset="" style="backdrop-filter: invert(0.45);">
+          <img src="" alt=" weather icon " srcset="" style="backdrop-filter: invert(0.45);">
         </div>
 
         <div class="forecast-secondary">
