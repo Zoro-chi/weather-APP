@@ -20,22 +20,22 @@ const unsplash = createApi({
 });
 
 // FETCH CITY PICTURE FROM UNSPLASH
-const fetchPhoto = async (city) => {
-  const photo = await unsplash.search.getPhotos({
-    query: city,
-    page: 1,
-    perPage: 10,
-    orientation: "landscape",
-    contentFilter: "high",
-    orderBy: "relevant",
-  });
-  const photosArr = photo.response.results;
-  const randomIndex = Math.floor(Math.random() * 10);
-  const randomPhoto = photosArr[randomIndex].urls.regular;
-  console.log(randomPhoto)
-  const photoAltDescription = photosArr[randomIndex].alt_description;
-  return { randomPhoto, photoAltDescription };
-};
+// const fetchPhoto = async (city) => {
+//   const photo = await unsplash.search.getPhotos({
+//     query: city,
+//     page: 1,
+//     perPage: 10,
+//     orientation: "landscape",
+//     contentFilter: "high",
+//     orderBy: "relevant",
+//   });
+//   const photosArr = photo.response.results;
+//   const randomIndex = Math.floor(Math.random() * 10);
+//   const randomPhoto = photosArr[randomIndex].urls.regular;
+//   console.log(randomPhoto)
+//   const photoAltDescription = photosArr[randomIndex].alt_description;
+//   return { randomPhoto, photoAltDescription };
+// };
 
 // FETCH WEATHER INFO FROM OPEN WEATHER API
 const fetchWeather = async (city) => {
