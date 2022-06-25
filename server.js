@@ -20,8 +20,8 @@ const unsplash = createApi({
 });
 
 // FETCH CITY PICTURE FROM UNSPLASH
-const fetchPhoto = async (city) => {
-  const photo = await unsplash.search.getPhotos({
+const fetchPhoto = (city) => {
+  const photo = unsplash.search.getPhotos({
     query: city,
     page: 1,
     perPage: 10,
@@ -57,17 +57,18 @@ app.post("/info", async (req, res) => {
   try {
     const city = req.body.city;
 
-    const photo = (await fetchPhoto(city)).randomPhoto;
+    const photo = ( await fetchPhoto(city)).randomPhoto;
     const altText = (await fetchPhoto(city)).photoAltDescription;
+   
+    let weather = (await fetchWeather(city)).json();
+    weather = await weather;
+    const icon = `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`;
+
     const image = {
       image: photo,
       text: altText,
       city: city.toUpperCase(),
     };
-
-    let weather = (await fetchWeather(city)).json();
-    weather = await weather;
-    const icon = `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`;
 
     res.render("info.ejs", {
       image: image,
