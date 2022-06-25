@@ -2,6 +2,7 @@ import { createApi } from "unsplash-js";
 import express from "express";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
+import cors from "cors";
 
 global.fetch = fetch;
 const app = express();
@@ -10,8 +11,10 @@ dotenv.config();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("dist"));
+app.use(cors)
 app.set("views", "./dist/views");
 app.set("view engine", "ejs");
+
 
 const unsplash = createApi({
   accessKey: process.env.UNSPLASH_ACCESS_KEY,
@@ -27,7 +30,7 @@ const fetchPhoto = async (city) => {
     contentFilter: "high",
     orderBy: "relevant",
   });
-  const photosArr = photo.response.results;
+  const photosArr = photo.response.result;
   const randomIndex = Math.floor(Math.random() * 10);
   const randomPhoto = photosArr[randomIndex].urls.regular;
   console.log(randomPhoto)
