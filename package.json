@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "Weather app",
   "type": "module",
+  "private": "true",
+  "proxy": "http://localhost:8000",
   "engines": {
     "node": "16.14.0",
     "npm": "8.3.1"
   },
-  "private": "true",
+  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
