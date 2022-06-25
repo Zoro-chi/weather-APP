@@ -11,10 +11,9 @@ dotenv.config();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("dist"));
-app.use(cors)
+app.use(cors())
 app.set("views", "./dist/views");
 app.set("view engine", "ejs");
-
 
 const unsplash = createApi({
   accessKey: process.env.UNSPLASH_ACCESS_KEY,
@@ -30,7 +29,7 @@ const fetchPhoto = async (city) => {
     contentFilter: "high",
     orderBy: "relevant",
   });
-  const photosArr = photo.response.result;
+  const photosArr = photo.response.results;
   const randomIndex = Math.floor(Math.random() * 10);
   const randomPhoto = photosArr[randomIndex].urls.regular;
   console.log(randomPhoto)
