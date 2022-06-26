@@ -7,7 +7,7 @@ const isProduction = process.env.NODE_ENV == "production";
 const stylesHandler = "style-loader";
 
 const config = {
-  entry: "./dist/src/js/index.js",
+  entry: path.resolve(__dirname, './dist/src/index.js'),
   output: {
     path: path.resolve(__dirname, "dist"),
   },
@@ -35,21 +35,15 @@ const config = {
   },
 };
 
-// module.exports = () => {
-//   if (isProduction) {
-//     config.mode = "production";
-//   } else {
-//     config.mode = "development";
-//   }
-//   return config;
-// }
-
-module.exports = {
-  plugins: [
-    new Dotenv({
-      systemvars: true,
-    })
-  ]
+module.exports = () => {
+  if (isProduction) {
+    config.mode = "production";
+  } else {
+    config.mode = "development";
+  }
+  return config;
 }
+
+
 
 
