@@ -11,7 +11,7 @@ dotenv.config();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("dist"));
-app.use(cors())
+app.use(cors());
 app.set("views", "./dist/views");
 app.set("view engine", "ejs");
 
@@ -32,7 +32,6 @@ const fetchPhoto = async (city) => {
   const photosArr = photo.response.results;
   const randomIndex = Math.floor(Math.random() * 10);
   const randomPhoto = photosArr[randomIndex].urls.regular;
-  console.log(randomPhoto)
   const photoAltDescription = photosArr[randomIndex].alt_description;
   return { randomPhoto, photoAltDescription };
 };
@@ -57,9 +56,9 @@ app.post("/info", async (req, res) => {
   try {
     const city = req.body.city;
 
-    const photo = ( await fetchPhoto(city)).randomPhoto;
+    const photo = (await fetchPhoto(city)).randomPhoto;
     const altText = (await fetchPhoto(city)).photoAltDescription;
-   
+
     let weather = (await fetchWeather(city)).json();
     weather = await weather;
     const icon = `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`;
@@ -69,7 +68,7 @@ app.post("/info", async (req, res) => {
       text: altText,
       city: city.toUpperCase(),
     };
-    console.log(icon)
+    console.log(res.statusCode());
 
     res.render("info.ejs", {
       image: image,
@@ -78,6 +77,12 @@ app.post("/info", async (req, res) => {
     });
   } catch (error) {
     console.log(error);
+  }
+});
+
+app.use((req, res) => {
+  if (res.statusCode !== 200) {
+    res.render(error);
   }
 });
 

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="icon" type="image/x-icon" href="../images/cloudshot.png"> -->
     <title>Weatheria</title>
   </head>
 
@@ -37,7 +38,7 @@
         </div>
       </div>
 
-    <section id="main" data-router-view="home" style="background-image: url(<%= image.image %>); background-size: cover; filter: brightness(70%); height: inherit; display: flex;">
+    <section id="main" data-router-view="home" style="background-image: url(<%=image.image%>); background-size: cover; filter: brightness(70%); height: inherit; display: flex;">
       <div class="forecast-container">
         <div class="forecast-main">
           <div class="main-temp">
