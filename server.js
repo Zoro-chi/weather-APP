@@ -69,6 +69,7 @@ app.post("/info", async (req, res) => {
       text: altText,
       city: city.toUpperCase(),
     };
+    console.log(icon)
 
     res.render("info.ejs", {
       image: image,
