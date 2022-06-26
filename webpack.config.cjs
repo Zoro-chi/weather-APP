@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 const isProduction = process.env.NODE_ENV == "production";
 
@@ -14,14 +15,11 @@ const config = {
     open: true,
     host: "localhost",
   },
-  //   plugins: [
-  //     new HtmlWebpackPlugin({
-  //       template: "index.html",
-  //     }),
-
-  //     //   Add your plugins here
-  //     //   Learn more about plugins from https://webpack.js.org/configuration/plugins/
-  //   ],
+  // plugins: [
+  //   new Dotenv({
+  //     systemvars: true,
+  //   }),
+  // ],
   module: {
     rules: [
       {
@@ -33,17 +31,25 @@ const config = {
         type: "asset",
       },
 
-      // Add your rules for custom modules here
-      // Learn more about loaders from https://webpack.js.org/loaders/
     ],
   },
 };
 
-module.exports = () => {
-  if (isProduction) {
-    config.mode = "production";
-  } else {
-    config.mode = "development";
-  }
-  return config;
-};
+// module.exports = () => {
+//   if (isProduction) {
+//     config.mode = "production";
+//   } else {
+//     config.mode = "development";
+//   }
+//   return config;
+// }
+
+module.exports = {
+  plugins: [
+    new Dotenv({
+      systemvars: true,
+    })
+  ]
+}
+
+

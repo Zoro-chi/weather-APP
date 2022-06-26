@@ -20,8 +20,8 @@ const unsplash = createApi({
 });
 
 // FETCH CITY PICTURE FROM UNSPLASH
-const fetchPhoto = (city) => {
-  const photo = unsplash.search.getPhotos({
+const fetchPhoto = async (city) => {
+  const photo = await unsplash.search.getPhotos({
     query: city,
     page: 1,
     perPage: 10,
