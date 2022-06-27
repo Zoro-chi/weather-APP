@@ -1,8 +1,27 @@
+.back {
+  display: flex;
+  justify-content: center;
+}
+.return-to-home {
+  width: 9rem;
+  background-color: #709abf;
+  color: #fff;
+  font-family: cursive;
+  border-radius: 100px;
+  font-weight: 500;
+  font-size: 1.3rem;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+.return-to-home:hover {
+  color: #709abf;
+  background-color: #fff;
+}
 .main {
   margin-top: 15%;
 }
 .container {
-  margin-top: 30vh;
+  margin-top: 25vh;
 }
 .st0 {
   fill: #fff;
