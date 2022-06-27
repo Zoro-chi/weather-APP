@@ -14,8 +14,8 @@ A weather app with a server api built from scratch. Server api consumes Unsplash
 
 
 ## Optimizations
-I feel the UI class of the code base can be refactored further if I had more time (I rushed the ending). After completion i noticed aspects of my UI class code that should be in my Project or Tasks Class. It was also my first time working with date objects and also date-fns, the due Date on the "Today" and "This week" filters could be made consitent and not display different formats. 
+Location images on mobile view-ports could be adjusted to look better through the options parameter in the unsplash api call. 
 
 ## Lessons Learned:
 
-This is was a good way for me to learn about and practice OOP. I could have done a lot better in seperation of concerns of each class object, but also with the implementation of abstraction and encapsulation in this project shows I did learn somethings. 
+This is was a good project that solidified the CRUD aspects of building a server api and also, the different ways in which api can be consumed through their documentations.
