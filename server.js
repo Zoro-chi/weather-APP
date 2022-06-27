@@ -68,7 +68,6 @@ app.post("/info", async (req, res) => {
       text: altText,
       city: city.toUpperCase(),
     };
-    console.log(res.statusCode());
 
     res.render("info.ejs", {
       image: image,
@@ -77,12 +76,7 @@ app.post("/info", async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-  }
-});
-
-app.use((req, res) => {
-  if (res.statusCode !== 200) {
-    res.render(error);
+    res.render("error.ejs");
   }
 });
 
