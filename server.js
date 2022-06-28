@@ -61,6 +61,7 @@ app.post("/info", async (req, res) => {
 
     let weather = (await fetchWeather(city)).json();
     weather = await weather;
+
     const icon = `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`;
 
     const image = {
