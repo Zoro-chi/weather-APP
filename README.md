@@ -2,7 +2,8 @@
 # WEATHERIA
 A weather app with a server api built from scratch. Server api consumes Unsplash and open weather api for images of locations and forecast details respectively.
 
-![image](https://user-images.githubusercontent.com/96382060/176059173-ec11d0f3-c6e5-4e0d-a545-fdc2b6cb7c4b.png)
+![image](https://user-images.githubusercontent.com/96382060/176059379-20b63292-504c-4af9-8cab-050066af20a7.png)
+
 
 
 **Link to project:** https://weatheria-app.herokuapp.com
