@@ -202,7 +202,7 @@ p {
 }
 
 /* ----------------------------------- MEDIA QUERY --------------------------------------------- */
-@media all and ( max-width: 600px ) {
+@media all and (max-width: 600px) {
   #side {
     height: 95vh;
   }
@@ -230,34 +230,35 @@ p {
   .load-animation img {
     width: 5rem;
   }
-  .forecast-container{
+  .forecast-container {
     width: 100vw;
     gap: 2rem;
     height: inherit;
     margin: 0rem;
   }
   .forecast-main {
-    width: 40vw;
+    width: 50vw;
+    overflow-wrap: break-word;
     height: inherit;
     flex-flow: column wrap;
     text-align: center;
     align-items: center;
   }
   .forecast-secondary {
-    width: 40vw;
+    width: 30vw;
+    font-size: 0.9rem;
     height: inherit;
     flex-flow: column wrap;
     text-align: center;
     align-items: center;
   }
-  .forecast-main h2{
-    font-size: 1.6rem;
+  .forecast-main h2 {
+    font-size: 1.5rem;
+  }
+  .forecast-main p {
+    font-size: 1rem;
   }
   .forecast-main img {
     width: fit-content;
   }
-  .forecast-secondary h2 {
-    font-size: 1.6rem;
-  }
-
 }

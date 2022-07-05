@@ -3,6 +3,7 @@ import express from "express";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
 import cors from "cors";
+import { readFile } from "fs/promises";
 
 global.fetch = fetch;
 const app = express();
@@ -18,6 +19,20 @@ app.set("view engine", "ejs");
 const unsplash = createApi({
   accessKey: process.env.UNSPLASH_ACCESS_KEY,
 });
+
+// PARSE THROUGH CITY LIST JSON FOR CITY ID
+const cityList = JSON.parse(
+  await readFile(new URL("./dist/src/city.list.json", import.meta.url))
+);
+
+const findId = (city, countryCode) => {
+  const found = cityList.filter((place) => {
+    return place.name === city && place.country === countryCode;
+  });
+
+  const id = found[0].id;
+  return id;
+};
 
 // FETCH CITY PICTURE FROM UNSPLASH
 const fetchPhoto = async (city) => {
@@ -37,9 +52,9 @@ const fetchPhoto = async (city) => {
 };
 
 // FETCH WEATHER INFO FROM OPEN WEATHER API
-const fetchWeather = async (city) => {
+const fetchWeather = async (id) => {
   const weather = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.OPEN_WEATHER_KEY}&units=metric`
+    `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${process.env.OPEN_WEATHER_KEY}&units=metric`
   );
   return weather;
 };
@@ -54,12 +69,16 @@ app.get("/", (req, res) => {
 
 app.post("/info", async (req, res) => {
   try {
-    const city = req.body.city;
+    let city = req.body.city.split(",")[0].trim();
+    city = city.charAt(0).toUpperCase() + city.slice(1);
+
+    const countryCode = req.body.city.split(",")[1].toUpperCase().trim();
+    const id = findId(city, countryCode);
 
     const photo = (await fetchPhoto(city)).randomPhoto;
     const altText = (await fetchPhoto(city)).photoAltDescription;
 
-    let weather = (await fetchWeather(city)).json();
+    let weather = (await fetchWeather(id)).json();
     weather = await weather;
 
     const icon = `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`;
